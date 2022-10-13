@@ -1,6 +1,6 @@
-package com.example.basicandroidapp.data
+package com.example.basicandroidapp.data.Remote
 
-import retrofit2.Call
+import com.example.basicandroidapp.data.Posts
 import retrofit2.Response
 import retrofit2.http.GET
 

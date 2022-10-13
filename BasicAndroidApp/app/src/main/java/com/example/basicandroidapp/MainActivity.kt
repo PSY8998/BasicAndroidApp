@@ -1,18 +1,11 @@
 package com.example.basicandroidapp
 
-import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.basicandroidapp.data.PostsApi
-import com.example.basicandroidapp.data.PostsRemoteDataSource
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.create
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 

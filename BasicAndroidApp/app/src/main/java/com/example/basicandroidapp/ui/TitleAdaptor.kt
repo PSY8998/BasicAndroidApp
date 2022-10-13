@@ -1,6 +1,5 @@
 package com.example.basicandroidapp.ui
 
-import android.icu.text.CaseMap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import com.example.basicandroidapp.R
 import com.example.basicandroidapp.data.Posts
 
 class TitleAdaptor(
-    val onPostClick: (postId: Int) -> PostsFragment
+    val onPostClick: (postId: Int) -> Unit
 ) : ListAdapter<Posts, TitleAdaptor.TitleViewHolder>(PostsDiffUtil()) {
 
     override fun onCreateViewHolder(
@@ -32,6 +31,7 @@ class TitleAdaptor(
         val post = getItem(position)
         holder.titleName.text = post.title
         holder.titleName.setOnClickListener { onPostClick(post.id) }
+
     }
 
     class TitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

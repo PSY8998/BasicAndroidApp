@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BasicAndroidApp</string>
+    <string name="accessibility_service_label">AccessibilityService</string>
 </resources>

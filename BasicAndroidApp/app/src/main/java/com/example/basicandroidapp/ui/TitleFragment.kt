@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -45,6 +46,15 @@ class TitleFragment : Fragment() {
         )
         binding?.idTitles?.adapter = titleAdaptor
 
+        val requestPermissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
+            { permissions ->
+                when{
+            }
+
+            }
+
+
         viewLifecycleOwner.lifecycleScope.launch {
             getPosts()
         }
@@ -55,7 +65,7 @@ class TitleFragment : Fragment() {
         val postsApi = PostsRemoteDataSource.postsService
 
 
-        val call: Response<List<Posts>> =  postsApi.getPosts()
+        val call: Response<List<Posts>> = postsApi.getPosts()
         val posts: List<Posts> = call.body() ?: emptyList()
         titleAdaptor.submitList(posts)
     }

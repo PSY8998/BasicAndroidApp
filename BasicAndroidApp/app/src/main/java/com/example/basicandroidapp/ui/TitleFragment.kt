@@ -12,6 +12,7 @@ import com.example.basicandroidapp.R
 import com.example.basicandroidapp.data.Posts
 import com.example.basicandroidapp.data.Remote.PostsRemoteDataSource
 import com.example.basicandroidapp.data.PostsRepository
+import com.example.basicandroidapp.data.modelclass.POST
 import com.example.basicandroidapp.databinding.FragmentTitleBinding
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -39,12 +40,8 @@ class TitleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        titleAdaptor = TitleAdaptor(
-            onPostClick = { postId ->
-                findNavController().navigate(R.id.action_titleFragment_to_postsFragment)
-            }
-        )
-        binding?.idTitles?.adapter = titleAdaptor
+        customAdaptor = CustomAdaptor
+        binding?.idTitles?.adapter = customAdaptor
 
         val requestPermissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
@@ -65,8 +62,8 @@ class TitleFragment : Fragment() {
         val postsApi = PostsRemoteDataSource.postsService
 
 
-        val call: Response<List<Posts>> = postsApi.getPosts()
-        val posts: List<Posts> = call.body() ?: emptyList()
+        val call: Response<List<retrofit2.http.POST>> = postsApi.getPosts()
+        val posts: List<POST> = (call.body() ?: emptyList()) as List<POST>
         titleAdaptor.submitList(posts)
     }
 }
